@@ -44,6 +44,8 @@ class SilentSafariViewController: SFSafariViewController, SFSafariViewController
     }
 
     func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
-        controller.dismiss(animated: false) { self.onResult(didLoadSuccessfully) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            controller.dismiss(animated: false) { self.onResult(didLoadSuccessfully) }
+        })
     }
 }
